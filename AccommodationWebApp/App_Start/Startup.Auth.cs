@@ -6,6 +6,8 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
 using AccommodationWebApp.Models;
+using System.Data.Entity;
+using AccommodationWebApp.DAL;
 
 namespace AccommodationWebApp
 {

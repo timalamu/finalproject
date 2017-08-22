@@ -1,0 +1,51 @@
+﻿@model IEnumerable<AccommodationWebApp.Models.MyApplication>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.StudentId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateOfApplication)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RoomType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AdmountDue)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.StudentId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateOfApplication)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RoomType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AdmountDue)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ApplicationReferenceNo }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ApplicationReferenceNo }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ApplicationReferenceNo })
+        </td>
+    </tr>
+}
+
+</table>

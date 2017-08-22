@@ -29,5 +29,11 @@ namespace AccommodationWebApp.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<AccommodationWebApp.Models.Student> Students { get; set; }
+
+        public System.Data.Entity.DbSet<AccommodationWebApp.Models.Room> Rooms { get; set; }
+
+        public System.Data.Entity.DbSet<AccommodationWebApp.Models.Booking> MyApplications { get; set; }
     }
 }
