@@ -6,111 +6,112 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using AccommodationWebApp.DAL;
 using AccommodationWebApp.Models;
 
 namespace AccommodationWebApp.Controllers
 {
-    public class MyApplicationsController : Controller
+    public class RoomsController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private AccommodationContext db = new AccommodationContext();
 
-        // GET: MyApplications
+        // GET: Rooms
         public ActionResult Index()
         {
-            return View(db.MyApplications.ToList());
+            return View(db.Rooms.ToList());
         }
 
-        // GET: MyApplications/Details/5
+        // GET: Rooms/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Booking myBooking = db.MyApplications.Find(id);
-            if (myBooking == null)
+            Room room = db.Rooms.Find(id);
+            if (room == null)
             {
                 return HttpNotFound();
             }
-            return View(myBooking);
+            return View(room);
         }
 
-        // GET: MyApplications/Create
+        // GET: Rooms/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: MyApplications/Create
+        // POST: Rooms/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ApplicationReferenceNo,StudentId,DateOfApplication,RoomType,AdmountDue")] Booking myApplication)
+        public ActionResult Create([Bind(Include = "RoomId,RoomType,QuantityAvailable,AmountDue")] Room room)
         {
             if (ModelState.IsValid)
             {
-                db.MyApplications.Add(myApplication);
+                db.Rooms.Add(room);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(myApplication);
+            return View(room);
         }
 
-        // GET: MyApplications/Edit/5
+        // GET: Rooms/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Booking myApplication = db.MyApplications.Find(id);
-            if (myApplication == null)
+            Room room = db.Rooms.Find(id);
+            if (room == null)
             {
                 return HttpNotFound();
             }
-            return View(myApplication);
+            return View(room);
         }
 
-        // POST: MyApplications/Edit/5
+        // POST: Rooms/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ApplicationReferenceNo,StudentId,DateOfApplication,RoomType,AdmountDue")] Booking myApplication)
+        public ActionResult Edit([Bind(Include = "RoomId,RoomType,QuantityAvailable,AmountDue")] Room room)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(myApplication).State = EntityState.Modified;
+                db.Entry(room).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(myApplication);
+            return View(room);
         }
 
-        // GET: MyApplications/Delete/5
+        // GET: Rooms/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Booking myApplication = db.MyApplications.Find(id);
-            if (myApplication == null)
+            Room room = db.Rooms.Find(id);
+            if (room == null)
             {
                 return HttpNotFound();
             }
-            return View(myApplication);
+            return View(room);
         }
 
-        // POST: MyApplications/Delete/5
+        // POST: Rooms/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Booking myApplication = db.MyApplications.Find(id);
-            db.MyApplications.Remove(myApplication);
+            Room room = db.Rooms.Find(id);
+            db.Rooms.Remove(room);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

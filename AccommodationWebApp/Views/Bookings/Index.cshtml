@@ -1,4 +1,4 @@
-﻿@model IEnumerable<AccommodationWebApp.Models.MyApplication>
+﻿@model IEnumerable<AccommodationWebApp.Models.Booking>
 
 @{
     ViewBag.Title = "Index";
@@ -12,25 +12,20 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.StudentId)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.DateOfApplication)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.RoomType)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.AdmountDue)
+            @Html.DisplayNameFor(model => model.AmountDue)
         </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.StudentId)
-        </td>
+       
         <td>
             @Html.DisplayFor(modelItem => item.DateOfApplication)
         </td>
@@ -38,12 +33,12 @@
             @Html.DisplayFor(modelItem => item.RoomType)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.AdmountDue)
+            @Html.DisplayFor(modelItem => item.AmountDue)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ApplicationReferenceNo }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ApplicationReferenceNo }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ApplicationReferenceNo })
+            @Html.ActionLink("Edit", "Edit", new { id=item.BookingId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.BookingId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.BookingId })
         </td>
     </tr>
 }

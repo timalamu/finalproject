@@ -15,6 +15,8 @@ namespace AccommodationWebApp.Models
         [Display(Name = "Standard Twin")] StandardTwin
     }
 
+    public enum RoomStatus { Vacant, Occupied }
+
     public class Room
     {
         const double RateEnsuiteSingle = 100;
@@ -25,39 +27,24 @@ namespace AccommodationWebApp.Models
         [Key]
         [Display (Name = "Room No.")]
         public int RoomId { get; set; }
+
         [Required]
         [Display (Name = "Room Type" )]
         public RoomType RoomType { get; set; }
+
         [Display (Name = "Available Quantity")]
         public int QuantityAvailable { get; set; }
+
+        [Display (Name = "Room Status")]
+        public RoomStatus RoomStatus { get; set; }
+
         [Display (Name = "Room Rate")]
         public double AmountDue { get; set; } 
     
-        public List<Booking> Bookings { get; set; }
+        [Required]
+        public virtual Booking Booking { get; set; }
     }
-
-//}
-//        {
-//            get
-//            {
-//                double amount == RoomType;
-//                if (amount == RateEnsuiteSingle)
-//                {
-//                    return RoomType.EnsuiteSingle;
-//                }
-//                else if (amount == RateStandardSingle)
-//                {
-//                    return BMICategory.Normal;
-//                }
-//                else if (bmi <= OverWeightUpperLimit)
-//                {
-//                    return BMICategory.OverWeight;
-//                }
-//                else
-//                {
-//                    return BMICategory.Obese;
-//                }
-//            }
-    }
+    
+}
 
 

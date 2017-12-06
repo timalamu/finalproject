@@ -6,13 +6,14 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using AccommodationWebApp.DAL;
 using AccommodationWebApp.Models;
 
 namespace AccommodationWebApp.Controllers
 {
     public class RoomsController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private AccommodationContext db = new AccommodationContext();
 
         // GET: Rooms
         public ActionResult Index()
@@ -43,10 +44,10 @@ namespace AccommodationWebApp.Controllers
 
         // POST: Rooms/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "RoomId,RoomType,QuantityAvailable,AmountDue")] Room room)
+        public ActionResult Create([Bind(Include = "RoomId,RoomType,QuantityAvailable,RoomStatus,AmountDue")] Room room)
         {
             if (ModelState.IsValid)
             {
@@ -75,10 +76,10 @@ namespace AccommodationWebApp.Controllers
 
         // POST: Rooms/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "RoomId,RoomType,QuantityAvailable,AmountDue")] Room room)
+        public ActionResult Edit([Bind(Include = "RoomId,RoomType,QuantityAvailable,RoomStatus,AmountDue")] Room room)
         {
             if (ModelState.IsValid)
             {

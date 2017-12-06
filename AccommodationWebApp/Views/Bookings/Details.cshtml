@@ -1,4 +1,4 @@
-﻿@model AccommodationWebApp.Models.MyApplication
+﻿@model AccommodationWebApp.Models.Booking
 
 @{
     ViewBag.Title = "Details";
@@ -7,17 +7,10 @@
 <h2>Details</h2>
 
 <div>
-    <h4>MyApplication</h4>
+    <h4>Booking</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.StudentId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.StudentId)
-        </dd>
-
+       
         <dt>
             @Html.DisplayNameFor(model => model.DateOfApplication)
         </dt>
@@ -35,16 +28,16 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.AdmountDue)
+            @Html.DisplayNameFor(model => model.AmountDue)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.AdmountDue)
+            @Html.DisplayFor(model => model.AmountDue)
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ApplicationReferenceNo }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.BookingId }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

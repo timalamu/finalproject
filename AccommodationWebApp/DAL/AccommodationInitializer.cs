@@ -15,27 +15,27 @@ namespace AccommodationWebApp.DAL
 
             var students = new List<Student>
             {
-            new Student{CAONumber = 1, LastName="Carson",FirstName="Alexander",EMailAddress="ac@gmail.com", YearOfStudy=YearOfStudy.FirstYear, ContactPhone=089955567},
-            new Student{CAONumber = 2, LastName="Billy",FirstName="James",EMailAddress="bj@gmail.com", YearOfStudy=YearOfStudy.Others, ContactPhone=08665567},
+            new Student{CAONumber = 1, LastName="Carson", FirstName="Alexander", EMailAddress="ac@gmail.com", YearOfStudy=YearOfStudy.FirstYear, ContactPhone=089955567, PreviouslyAccommodated=false },
+            new Student{CAONumber = 2, LastName="Billy", FirstName="James", EMailAddress="bj@gmail.com", YearOfStudy=YearOfStudy.Others, ContactPhone=08665567, PreviouslyAccommodated=true},
             };
             students.ForEach(s => context.Students.Add(s));
             dbcontext.SaveChanges();
 
             var bookings = new List<Booking>
             {
-            new Booking{ApplicationReferenceNo = 1, DateOfApplication=DateTime.Now, RoomType=Rooms.EnsuiteSingle, AmountDue=100}
+            new Booking{DateOfApplication=DateTime.Now, RoomType=Rooms.EnsuiteSingle, AmountDue=100}
             };
 
             bookings.ForEach(b => context.Bookings.Add(b));
             dbcontext.SaveChanges();
 
-            //var rooms = new List<Room>
-            //{
-            //new Room{RoomType=RoomType.EnsuiteSingle, QuantityAvailable=3, AmountDue=100.00}
-            //};
+            var rooms = new List<Room>
+            {
+            new Room{RoomType=RoomType.EnsuiteSingle, QuantityAvailable=3, RoomStatus=RoomStatus.Occupied, AmountDue=100.00}
+            };
 
-            //rooms.ForEach(r => context.Rooms.Add(r));
-            //context.SaveChanges();
+            rooms.ForEach(r => context.Rooms.Add(r));
+            context.SaveChanges();
 
             //var myApplications = new List<MyApplication>
             //{

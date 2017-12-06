@@ -1,6 +1,8 @@
-﻿using System;
+﻿using AccommodationWebApp.Common;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -23,12 +25,13 @@ namespace AccommodationWebApp.Models
         const double RateStandardTwin = 140;
 
         [Key]
-        [Display (Name ="Application No.")]
-        public int ApplicationReferenceNo { get; set; }
+        [Display(Name = "Application No.")]
+        public int BookingId { get; set; }
 
         [Display (Name = "Date of Application")]
         [DataType(DataType.Date)]
         //[DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [CurrentDate]
         public DateTime DateOfApplication { get; set; }
 
         [Display (Name = "Room Type")]
@@ -37,8 +40,8 @@ namespace AccommodationWebApp.Models
         [Display (Name = "Amount Due")]
         public Double AmountDue { get; set; }
 
-        public Student Student { get; set; }
+        public virtual Student Student { get; set; }
 
-        public Room Room { get; set; }
+        public virtual Room Room { get; set; }
     }
 }
