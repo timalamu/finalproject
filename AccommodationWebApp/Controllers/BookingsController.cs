@@ -13,7 +13,7 @@ namespace AccommodationWebApp.Controllers
 {
     public class BookingsController : Controller
     {
-        private AccommodationContext db = new AccommodationContext();
+        private AccommodationContext1 db = new AccommodationContext1();
 
         // GET: Bookings
         public ActionResult Index()
@@ -50,7 +50,7 @@ namespace AccommodationWebApp.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "BookingId,RoomId,StudentId,DateOfApplication,RoomType,AmountDue")] Booking booking)
+        public ActionResult Create([Bind(Include = "ApplicationReferenceNo,StudentId,DateOfApplication,LastName,FirstName,EMailAddress,YearOfStudy,ContactPhone,PreviouslyAccommodated,RoomType,RoomId,AmountDue,BookingStatus")] Booking booking)
         {
             if (ModelState.IsValid)
             {
@@ -59,8 +59,8 @@ namespace AccommodationWebApp.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.RoomId = new SelectList(db.Rooms, "RoomId", "RoomId", booking.Room);
-            ViewBag.StudentId = new SelectList(db.Students, "StudentId", "LastName", booking.Student);
+            ViewBag.RoomId = new SelectList(db.Rooms, "RoomId", "RoomId", booking.RoomId);
+            ViewBag.StudentId = new SelectList(db.Students, "StudentId", "LastName", booking.StudentId);
             return View(booking);
         }
 
@@ -76,8 +76,8 @@ namespace AccommodationWebApp.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.RoomId = new SelectList(db.Rooms, "RoomId", "RoomId", booking.Room);
-            ViewBag.StudentId = new SelectList(db.Students, "StudentId", "LastName", booking.Student);
+            ViewBag.RoomId = new SelectList(db.Rooms, "RoomId", "RoomId", booking.RoomId);
+            ViewBag.StudentId = new SelectList(db.Students, "StudentId", "LastName", booking.StudentId);
             return View(booking);
         }
 
@@ -86,7 +86,7 @@ namespace AccommodationWebApp.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "BookingId,RoomId,StudentId,DateOfApplication,RoomType,AmountDue")] Booking booking)
+        public ActionResult Edit([Bind(Include = "ApplicationReferenceNo,StudentId,DateOfApplication,LastName,FirstName,EMailAddress,YearOfStudy,ContactPhone,PreviouslyAccommodated,RoomType,RoomId,AmountDue,BookingStatus")] Booking booking)
         {
             if (ModelState.IsValid)
             {
@@ -94,8 +94,8 @@ namespace AccommodationWebApp.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.RoomId = new SelectList(db.Rooms, "RoomId", "RoomId", booking.Room);
-            ViewBag.StudentId = new SelectList(db.Students, "StudentId", "LastName", booking.Student);
+            ViewBag.RoomId = new SelectList(db.Rooms, "RoomId", "RoomId", booking.RoomId);
+            ViewBag.StudentId = new SelectList(db.Students, "StudentId", "LastName", booking.StudentId);
             return View(booking);
         }
 

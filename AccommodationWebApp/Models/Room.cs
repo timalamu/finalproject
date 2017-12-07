@@ -10,12 +10,10 @@ namespace AccommodationWebApp.Models
     public enum RoomType
     {
         [Display(Name = "Ensuite Single")] EnsuiteSingle,
-        [Display (Name = "Standard Single")] StandardSingle,
+        [Display(Name = "Standard Single")] StandardSingle,
         [Display(Name = "Ensuite Twin")] EnsuiteTwin,
         [Display(Name = "Standard Twin")] StandardTwin
     }
-
-    public enum RoomStatus { Vacant, Occupied }
 
     public class Room
     {
@@ -25,26 +23,23 @@ namespace AccommodationWebApp.Models
         const double RateStandardTwin = 140;
 
         [Key]
-        [Display (Name = "Room No.")]
+        [Display(Name = "Room No.")]
         public int RoomId { get; set; }
 
         [Required]
-        [Display (Name = "Room Type" )]
+        [Display(Name = "Room Type")]
         public RoomType RoomType { get; set; }
 
-        [Display (Name = "Available Quantity")]
+        [Display(Name = "Available Quantity")]
         public int QuantityAvailable { get; set; }
 
-        [Display (Name = "Room Status")]
-        public RoomStatus RoomStatus { get; set; }
+        [Display(Name = "Room Rate")]
+        public double AmountDue { get; set; }
 
-        [Display (Name = "Room Rate")]
-        public double AmountDue { get; set; } 
-    
-        [Required]
-        public virtual Booking Booking { get; set; }
+        public List<Booking> Bookings { get; set; }
+
+
     }
-    
 }
 
 

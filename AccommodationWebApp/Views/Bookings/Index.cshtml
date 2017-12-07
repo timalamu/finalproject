@@ -12,7 +12,31 @@
 <table class="table">
     <tr>
         <th>
+            @Html.DisplayNameFor(model => model.Room.RoomId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Student.LastName)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.DateOfApplication)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EMailAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.YearOfStudy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ContactPhone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PreviouslyAccommodated)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.RoomType)
@@ -20,14 +44,40 @@
         <th>
             @Html.DisplayNameFor(model => model.AmountDue)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BookingStatus)
+        </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
-       
+        <td>
+            @Html.DisplayFor(modelItem => item.Room.RoomId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Student.LastName)
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.DateOfApplication)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EMailAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.YearOfStudy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ContactPhone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PreviouslyAccommodated)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.RoomType)
@@ -36,9 +86,12 @@
             @Html.DisplayFor(modelItem => item.AmountDue)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.BookingId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.BookingId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.BookingId })
+            @Html.DisplayFor(modelItem => item.BookingStatus)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ApplicationReferenceNo }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ApplicationReferenceNo }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ApplicationReferenceNo })
         </td>
     </tr>
 }

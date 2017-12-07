@@ -13,7 +13,7 @@ namespace AccommodationWebApp.Controllers
 {
     public class StudentsController : Controller
     {
-        private AccommodationContext db = new AccommodationContext();
+        private AccommodationContext1 db = new AccommodationContext1();
 
         // GET: Students
         public ActionResult Index()

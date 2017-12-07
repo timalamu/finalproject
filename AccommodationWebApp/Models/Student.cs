@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -7,11 +8,14 @@ using System.Web;
 
 namespace AccommodationWebApp.Models
 {
-    public enum YearOfStudy { Select,
+    public enum YearOfStudy
+    {
+        Select,
         [Display(Name = "1st Year")] FirstYear,
         [Display(Name = "Final Year")] FinalYear,
-        Others }
-        public class Student
+        Others
+    }
+    public class Student
     {
         [Required]
         [Display(Name = "Student Number")]
@@ -50,7 +54,7 @@ namespace AccommodationWebApp.Models
         [Display(Name = "Please check the box if you have been offerred and accepted accommodation before")]
         public bool PreviouslyAccommodated { get; set; }
 
-        public virtual Booking Booking { get; set; }
+        public List<Booking> StudentBookings { get; set; }
 
     }
 }

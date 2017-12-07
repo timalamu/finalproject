@@ -13,7 +13,7 @@ namespace AccommodationWebApp.Controllers
 {
     public class RoomsController : Controller
     {
-        private AccommodationContext db = new AccommodationContext();
+        private AccommodationContext1 db = new AccommodationContext1();
 
         // GET: Rooms
         public ActionResult Index()
@@ -47,7 +47,7 @@ namespace AccommodationWebApp.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "RoomId,RoomType,QuantityAvailable,RoomStatus,AmountDue")] Room room)
+        public ActionResult Create([Bind(Include = "RoomId,RoomType,QuantityAvailable,AmountDue")] Room room)
         {
             if (ModelState.IsValid)
             {
@@ -79,7 +79,7 @@ namespace AccommodationWebApp.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "RoomId,RoomType,QuantityAvailable,RoomStatus,AmountDue")] Room room)
+        public ActionResult Edit([Bind(Include = "RoomId,RoomType,QuantityAvailable,AmountDue")] Room room)
         {
             if (ModelState.IsValid)
             {
